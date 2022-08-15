@@ -27,10 +27,10 @@ const handleErr = (err) => {
 
 const addWord = async (req, res) => {
     try {
-        let { word, language } = req.params;
+        let { word } = req.params;
         let options = {
             method: "get",
-            url: `https://od-api.oxforddictionaries.com/api/v2/entries/${language}/${word}`,
+            url: `https://od-api.oxforddictionaries.com/api/v2/entries/en/${word}`,
             headers: {
                 app_id: "742c4977",
                 app_key: "414ea5afdf655b8892661eeffe6764d6"
@@ -81,13 +81,13 @@ const addWord = async (req, res) => {
 
 const getWord = async (req, res) => {
     try {
-        let { word, language } = req.params;
+        let { word } = req.params;
 
         if (word) {
             word = { $regex: word, $options: 'i' }
         }
 
-        const fetchWord = await wordModel.find({ title: word, language: language })
+        const fetchWord = await wordModel.find({ title: word })
         console.log(fetchWord);
         res.status(200).send(fetchWord);
     } catch (error) {
