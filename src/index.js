@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import route from './route/route.js';
 import path from "path";
 import pkg from 'dotenv';
-pkg.config({ path: './config.env' });
+pkg.config({ path: './src/config.env' });
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -22,7 +22,9 @@ if (process.env.NODE_ENV == "production") {
     })
 }
 
-mongoose.connect(process.env.DB, {
+const DB = process.env.DB;
+console.log(DB)
+mongoose.connect(DB, {
     useNewUrlParser: true
 }).then(
     _ => app.listen(PORT, (_ => console.log(`server is live on ${PORT}`)))
