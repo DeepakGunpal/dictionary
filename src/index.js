@@ -23,8 +23,8 @@ if (process.env.NODE_ENV == "production") {
 }
 
 const DB = process.env.DB;
-console.log(DB)
-mongoose.connect(DB, {
+// console.log(DB)
+mongoose.connect("mongodb+srv://DeepakGunpal:hdg5NWwcvf2wUDTN@deepakcluster0.hynna.mongodb.net/dictionaryRoaDo", {
     useNewUrlParser: true
 }).then(
     _ => app.listen(PORT, (_ => console.log(`server is live on ${PORT}`)))
