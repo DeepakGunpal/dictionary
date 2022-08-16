@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@emotion/react";
-import { Button, createTheme,  TextField } from "@mui/material";
+import { Button, createTheme, TextField } from "@mui/material";
 import React, { useState } from "react";
 import Definations from "../definations/Definations";
 import "./Header.css"
@@ -20,12 +20,13 @@ const Header = ({ word, setWord }) => {
 
 
     const click = async () => {
-        const res = await fetch(`http://localhost:4000/addWord/en/${word}`, {
+        const res = await fetch(`https://deepak-dictionary.herokuapp.com/addWord/${word}`, {
             method: "POST"
         });
 
         const data = await res.json();
         setMeanings(data);
+        setWord("");
     }
 
     console.log(meanings)
@@ -38,18 +39,18 @@ const Header = ({ word, setWord }) => {
                     <TextField
                         className="search"
                         label="Search a Word"
-                        variant="standard"
                         value={word}
                         onChange={e => setWord(e.target.value)}
                     />
                     <Button
                         variant="contained"
+                        className="add"
                         onClick={click}
                     >
                         Add Word
                     </Button>
                 </ThemeProvider>
-                <Definations meanings={meanings} />
+
             </div>
 
         </div>

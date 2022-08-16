@@ -11,15 +11,11 @@ function App() {
   const dictionaryAPI = async () => {
     try {
 
-      const res = await fetch(`http://localhost:4000/getWord/en/${word}`, {
-        method: "get"
+      const res = await fetch(`https://deepak-dictionary.herokuapp.com/getWord/${word}`, {
+        method: "GET"
       });
 
       const data = await res.json();
-
-      // const data = await axios.get(
-      //   `https://api.dictionaryapi.dev/api/v2/entries/${language}/${word}`
-      // );
 
       setMeanings(data);
 
