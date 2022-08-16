@@ -32,6 +32,7 @@ const Header = ({ word, setWord }) => {
 
     return (
         <div className="header">
+        <span>Deepak Gunpal</span>
             <span className="title" > {word ? word : "Word Hunt"} </span>
             <div className="inputs">
                 <ThemeProvider theme={darkTheme}>
