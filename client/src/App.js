@@ -11,7 +11,7 @@ function App() {
   const dictionaryAPI = async () => {
     try {
 
-      const res = await fetch(`https://deepak-dictionary.herokuapp.com/getWord/${word}`, {
+      const res = await fetch(`https://deepak-dictionary.herokuapp.com/word/${word}`, {
         method: "GET"
       });
 

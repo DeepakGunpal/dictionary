@@ -96,4 +96,21 @@ const getWord = async (req, res) => {
     }
 }
 
-export { addWord, getWord };
+const word = async (req, res) => {
+    try {
+        let { word } = req.params;
+
+        if (word) {
+            word = { $regex: word, $options: 'i' }
+        }
+
+        const fetchWord = await wordModel.find({ title: word })
+        console.log(fetchWord);
+        res.status(200).send(fetchWord);
+    } catch (error) {
+        const errorForUser = handleErr(error);
+        res.status(500).send(errorForUser)
+    }
+}
+
+export { addWord, getWord, word };
