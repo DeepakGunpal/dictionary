@@ -17,7 +17,7 @@ const Header = ({ word, setWord }) => {
     });
 
 
-
+//fetch new words from oxford api and storing in mongoDB
     const click = async () => {
         const res = await fetch(`https://deepak-dictionary.herokuapp.com/addWord/${word}`, {
             method: "POST"
@@ -30,7 +30,6 @@ const Header = ({ word, setWord }) => {
 
     return (
         <div className="header">
-        <span>Deepak Gunpal</span>
             <span className="title" > {word ? word : "Word Hunt"} </span>
             <div className="inputs">
                 <ThemeProvider theme={darkTheme}>

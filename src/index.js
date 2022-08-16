@@ -8,6 +8,8 @@ pkg.config({ path: './src/config.env' });
 const app = express();
 const PORT = process.env.PORT || 4000;
 app.use(express.json());
+
+//cors
 app.use((req, res, next) => {
     res.header({ "Access-Control-Allow-Origin": "*" });
     next();

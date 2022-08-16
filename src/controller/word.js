@@ -88,7 +88,6 @@ const word = async (req, res) => {
         }
 
         const fetchWord = await wordModel.find({ title: word })
-        console.log(fetchWord);
         res.status(200).send(fetchWord);
     } catch (error) {
         const errorForUser = handleErr(error);
@@ -96,4 +95,15 @@ const word = async (req, res) => {
     }
 }
 
-export { addWord,  word };
+
+const allWord = async (req, res) => {
+    try {
+        const fetchWord = await wordModel.find().collation({ locale: "en", strength: 2 }).sort({ title: 1 })
+        res.status(200).send(fetchWord);
+    } catch (error) {
+        const errorForUser = handleErr(error);
+        res.status(500).send(errorForUser)
+    }
+}
+
+export { addWord, word, allWord };
