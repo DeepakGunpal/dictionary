@@ -1,7 +1,6 @@
 import { ThemeProvider } from "@emotion/react";
 import { Button, createTheme, TextField } from "@mui/material";
 import React, { useState } from "react";
-import Definations from "../definations/Definations";
 import "./Header.css"
 
 
