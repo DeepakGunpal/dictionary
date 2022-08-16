@@ -45,6 +45,9 @@ const Definations = ({ word, meanings }) => {
                                 <span>{syn}, </span>
                             ))
                         }
+                        <br />
+                        <hr />
+                        <br />
 
                     </div >
 
