@@ -1,12 +1,11 @@
 import { ThemeProvider } from "@emotion/react";
 import { Button, createTheme, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import "./Header.css"
 
 
 const Header = ({ word, setWord }) => {
 
-    const [meanings, setMeanings] = useState([]);
     const darkTheme = createTheme({
         palette: {
             primary: {
@@ -17,14 +16,12 @@ const Header = ({ word, setWord }) => {
     });
 
 
-//fetch new words from oxford api and storing in mongoDB
+    //fetch new words from oxford api and storing in mongoDB
     const click = async () => {
-        const res = await fetch(`https://deepak-dictionary.herokuapp.com/addWord/${word}`, {
+        await fetch(`https://deepak-dictionary.herokuapp.com/addWord/${word}`, {
             method: "POST"
         });
 
-        const data = await res.json();
-        setMeanings(data);
         setWord("");
     }
 

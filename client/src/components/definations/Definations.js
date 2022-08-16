@@ -49,19 +49,19 @@ const Definations = ({ word, meanings }) => {
                                 <b> {defi} <hr /> </b>
                             ))
                         }
-                        {def.example.length != 0 && (<b>Example : <hr /></b>)}
-                        {def.example.length != 0 && (
+                        {def.example.length !== 0 && (<b>Example : <hr /></b>)}
+                        {def.example.length !== 0 && (
                             def.example.map(ex => (
                                 <span>{ex} <hr /></span>
                             ))
                         )}
-                        {def.synonyms.length != 0 && (<span> <b>Synonyms : </b> {def.synonyms.map(syn => `${syn}, `)}, </span>)}
+                        {def.synonyms.length !== 0 && (<span> <b>Synonyms : </b> {def.synonyms.map(syn => `${syn}, `)}, </span>)}
 
                     </div >
 
                 ))
             ) : (
-                meanings.length == 0 ? (<span className='subTitle'>Not available, Press Add word and Search again</span>) :
+                meanings.length === 0 ? (<span className='subTitle'>Not available, Press Add word and Search again</span>) :
                     (
                         meanings.map(def => (
                             <div
@@ -85,13 +85,13 @@ const Definations = ({ word, meanings }) => {
                                         <b> {defi} <hr /> </b>
                                     ))
                                 }
-                                {def.example.length != 0 && (<b>Example : <hr /></b>)}
-                                {def.example.length != 0 && (
+                                {def.example.length !== 0 && (<b>Example : <hr /></b>)}
+                                {def.example.length !== 0 && (
                                     def.example.map(ex => (
                                         <span>{ex} <hr /></span>
                                     ))
                                 )}
-                                {def.synonyms.length != 0 && (<span> <b>Synonyms : </b> {def.synonyms.map(syn => `${syn}, `)}, </span>)}
+                                {def.synonyms.length !== 0 && (<span> <b>Synonyms : </b> {def.synonyms.map(syn => `${syn}, `)}, </span>)}
 
                             </div >
 
