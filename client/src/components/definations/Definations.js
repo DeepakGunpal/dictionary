@@ -12,11 +12,9 @@ const Definations = ({ word, meanings }) => {
                         className='singleMean'
                         style={{ backgroundColor: "white", color: "black" }}
                     >
-                        <b style={{ backgroundColor: "white", color: "blue" }}>word : </b>
-                        {
-                            < span > {def.title} < hr /></span>
+                        <b style={{ backgroundColor: "white", color: "blue" }}>word : {def.title} </b>
+                        < hr />
 
-                        }
                         <b >lexicalCategory : </b>
                         {
                             < span > {def.lexicalCategory} < hr /></span>
