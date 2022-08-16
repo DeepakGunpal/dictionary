@@ -12,7 +12,7 @@ function App() {
     try {
 
       const res = await fetch(`https://deepak-dictionary.herokuapp.com/word/${word}`, {
-        method: "GET"
+        method: "POST"
       });
 
       const data = await res.json();
