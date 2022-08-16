@@ -28,8 +28,6 @@ const Header = ({ word, setWord }) => {
         setWord("");
     }
 
-    console.log(meanings)
-
     return (
         <div className="header">
         <span>Deepak Gunpal</span>
