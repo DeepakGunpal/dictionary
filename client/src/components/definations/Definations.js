@@ -12,6 +12,21 @@ const Definations = ({ word, meanings }) => {
                         className='singleMean'
                         style={{ backgroundColor: "white", color: "black" }}
                     >
+                        <b style={{ backgroundColor: "white", color: "blue" }}>word : </b>
+                        {
+                            < span > {def.title} < hr /></span>
+
+                        }
+                        <b >lexicalCategory : </b>
+                        {
+                            < span > {def.lexicalCategory} < hr /></span>
+
+                        }
+                        <b >origin : </b>
+                        {
+                            < span > {def.origin} < hr /></span>
+
+                        }
                         <b>Definitions :</b> <hr />
                         {
                             def.definitions.map(defi => (
@@ -31,12 +46,12 @@ const Definations = ({ word, meanings }) => {
                             ))
                         }
 
-                    </div>
+                    </div >
 
                 ))
             )
             }
-        </div>
+        </div >
     );
 }
 
