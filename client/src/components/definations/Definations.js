@@ -3,6 +3,8 @@ import './Definations.css'
 
 const Definations = ({ word, meanings }) => {
     const [allWords, setallWords] = useState([]);
+
+    //fetching all words form mongoDB
     const dictionaryAPI = async () => {
         try {
 
@@ -23,11 +25,13 @@ const Definations = ({ word, meanings }) => {
     useEffect(() => {
         dictionaryAPI();
     }, [])
-    
+
     return (
+        //return definitions
         <div className='meanings'>
 
             {word === "" ? (
+                //when search is empty show all words from DB in sorted in alphabetical order
                 allWords.map(def => (
                     <div
                         className='singleMean'
@@ -77,6 +81,8 @@ const Definations = ({ word, meanings }) => {
 
                 ))
             ) : (
+                //when there is word in search then show data matched as complete sting or even as substring
+                //in alphebetical order
                 meanings.length === 0 ? (<span className='subTitle'>Not available, Press Add word and Search again</span>) :
                     (
                         meanings.map(def => (

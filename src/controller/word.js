@@ -1,7 +1,7 @@
 import wordModel from "../models/word.js";
 import axios from 'axios';
 
-
+//handle errors
 const handleErr = (err) => {
     let errors = { title: '' }
 
@@ -25,6 +25,8 @@ const handleErr = (err) => {
     return errors;
 }
 
+
+//fetch new words form oxford api and add in mongoDB
 const addWord = async (req, res) => {
     try {
         let { word } = req.params;
@@ -37,7 +39,7 @@ const addWord = async (req, res) => {
             }
         }
         const wordMeaning = await axios(options).catch(err => { throw new Error("No such word exists") });
-        
+
         if (wordMeaning) {
 
             const title = word;
@@ -51,6 +53,7 @@ const addWord = async (req, res) => {
             const example = [];
             const synonyms = [];
 
+            //storing only the relevant part from api 
             wordMeaning.data.results[0].lexicalEntries.map(ent => {
                 ent.entries.map(sense => {
                     sense.senses.map(def => {
@@ -72,6 +75,7 @@ const addWord = async (req, res) => {
 
             const newWord = { title, definitions, audio, example, lexicalCategory, origin, synonyms };
 
+            //create doc and store in word collection
             const wordSaved = [await wordModel.create(newWord)];
 
             res.status(200).send(wordSaved);
@@ -84,10 +88,13 @@ const addWord = async (req, res) => {
     }
 }
 
+//fetch the searched word from mongoDB
 const word = async (req, res) => {
     try {
         let { word } = req.params;
 
+        //used $regex to match substring also
+        // and $options for case sensitive
         if (word) {
             word = { $regex: word, $options: 'i' }
         }
@@ -100,9 +107,10 @@ const word = async (req, res) => {
     }
 }
 
-
+//fetch all words form DB
 const allWord = async (req, res) => {
     try {
+        //used collation to specify the language and strength to sort in english alpha. order
         const fetchWord = await wordModel.find().collation({ locale: "en", strength: 2 }).sort({ title: 1 })
         res.status(200).send(fetchWord);
     } catch (error) {
