@@ -27,7 +27,7 @@ const Header = ({ word, setWord }) => {
 
     return (
         <div className="header">
-            <span className="title" > {word ? word : "Word Hunt"} </span>
+            <span className="title" > {word ? word : "Dictionary"} </span>
             <div className="inputs">
                 <ThemeProvider theme={darkTheme}>
                     <TextField
@@ -40,6 +40,7 @@ const Header = ({ word, setWord }) => {
                         variant="contained"
                         className="add"
                         onClick={click}
+                        style={{ fontWeight: 'bolder', fontSize: '15px' }}
                     >
                         Add Word
                     </Button>

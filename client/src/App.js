@@ -38,7 +38,7 @@ function App() {
 
       <Container
         maxWidth="md"
-        style={{ display: "flex", flexDirection: "column", height: "100vh" }}
+        style={{ display: "flex", flexDirection: "column", height: "100vh", justifyContent: 'space-evenly' }}
       >
         <Header
           word={word}
