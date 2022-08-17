@@ -8,6 +8,7 @@ const wordSchema = new mongoose.Schema({
     },
     lexicalCategory: String,
     origin: String,
+    audio: Object,
     definitions: {
         type: Array,
         required: true

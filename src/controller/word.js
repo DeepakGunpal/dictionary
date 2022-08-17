@@ -37,12 +37,15 @@ const addWord = async (req, res) => {
             }
         }
         const wordMeaning = await axios(options).catch(err => { throw new Error("No such word exists") });
-
+        
         if (wordMeaning) {
 
             const title = word;
             const lexicalCategory = wordMeaning.data.results[0].lexicalEntries[0].lexicalCategory.text;
             const origin = wordMeaning.data.results[0].lexicalEntries[0].entries[0].etymologies[0];
+            let audio;
+            if (wordMeaning.data.results[0].lexicalEntries[0].entries[0].pronunciations[0])
+                audio = wordMeaning.data.results[0].lexicalEntries[0].entries[0].pronunciations[0]
 
             const definitions = [];
             const example = [];
@@ -51,9 +54,11 @@ const addWord = async (req, res) => {
             wordMeaning.data.results[0].lexicalEntries.map(ent => {
                 ent.entries.map(sense => {
                     sense.senses.map(def => {
-                        def.definitions.map(defi => {
-                            if (defi) definitions.push(defi);
-                        })
+                        if (def.definitions) {
+                            def.definitions.map(defi => {
+                                if (defi) definitions.push(defi);
+                            })
+                        }
                         if (def.examples) {
                             def.examples.map(ex => { if (ex) example.push(ex.text) })
                         }
@@ -65,7 +70,7 @@ const addWord = async (req, res) => {
             })
 
 
-            const newWord = { title, definitions, example, lexicalCategory, origin, synonyms };
+            const newWord = { title, definitions, audio, example, lexicalCategory, origin, synonyms };
 
             const wordSaved = [await wordModel.create(newWord)];
 

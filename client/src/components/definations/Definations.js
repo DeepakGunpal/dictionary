@@ -23,9 +23,10 @@ const Definations = ({ word, meanings }) => {
     useEffect(() => {
         dictionaryAPI();
     }, [])
-
+    
     return (
         <div className='meanings'>
+
             {word === "" ? (
                 allWords.map(def => (
                     <div
@@ -34,6 +35,21 @@ const Definations = ({ word, meanings }) => {
                     >
                         <b style={{ backgroundColor: "white", color: "blue", fontSize: '30px', textTransform: 'uppercase' }}>WORD : {def.title} </b>
                         < hr />
+
+                        {def.audio && (
+                            <div className='audio'>
+                                <b >Pronunciation : </b>
+                                <audio
+                                    src={def.audio.audioFile}
+                                    controls
+                                    style={{ backgroundColor: '#fff', borderRadius: 10 }}
+
+                                >
+                                    Your browser does not support audio element
+                                </audio></div>
+                        )}
+                        {def.audio && (<hr />)}
+
                         {
                             < span > <b >lexicalCategory : </b> {def.lexicalCategory} < hr /></span>
 
@@ -70,6 +86,19 @@ const Definations = ({ word, meanings }) => {
                             >
                                 <b style={{ backgroundColor: "white", color: "blue", fontSize: '30px', textTransform: 'uppercase' }}>WORD : {def.title} </b>
                                 < hr />
+                                {def.audio && (
+                                    <div className='audio'>
+                                        <b >Pronunciation : </b>
+                                        <audio
+                                            src={def.audio.audioFile}
+                                            controls
+                                            style={{ backgroundColor: '#fff', borderRadius: 10 }}
+
+                                        >
+                                            Your browser does not support audio element
+                                        </audio></div>
+                                )}
+                                {def.audio && (<hr />)}
                                 {
                                     < span > <b >lexicalCategory : </b> {def.lexicalCategory} < hr /></span>
 
