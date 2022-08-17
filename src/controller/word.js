@@ -34,8 +34,8 @@ const addWord = async (req, res) => {
             method: "get",
             url: `https://od-api.oxforddictionaries.com/api/v2/entries/en/${word}`,
             headers: {
-                app_id: "742c4977",
-                app_key: "414ea5afdf655b8892661eeffe6764d6"
+                app_id: "ee97a96d",
+                app_key: "238dedef737a396a8d8bcedcd93e6d4c"
             }
         }
         const wordMeaning = await axios(options).catch(err => { throw new Error("No such word exists") });
