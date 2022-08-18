@@ -5,7 +5,7 @@ import './Results.css'
 const Results = ({ word, meanings }) => {
     const [allWords, setallWords] = useState([]);
 
-    //fetching all words form mongoDB
+    //* fetching all words form mongoDB
     const dictionaryAPI = async () => {
         try {
 
@@ -28,20 +28,18 @@ const Results = ({ word, meanings }) => {
     }, [])
 
     return (
-        //return definitions
+        //* return definitions
         <div className='meanings'>
 
             {word === "" ? (
-                //when search is empty show all words from DB in sorted in alphabetical order
+                //* when search is empty show all words from DB sorted in alphabetical order
                 <Definitions meanings={allWords} />
             ) : (
-                //when searched word is not availble on mongoDB
-                meanings.length === 0 ? (<span className='subTitle'>Not available, Press Add word and Search again</span>) :
-                    (
-                        //when there is word in search then show data matched as complete sting or even as substring
-                        //in alphebetical order
-                        <Definitions meanings={meanings} />
-                    )
+
+                //* when there is word in search then show data matched as complete sting or even as substring
+                //* in alphebetical order
+                <Definitions meanings={meanings} />
+
             )
             }
         </div >

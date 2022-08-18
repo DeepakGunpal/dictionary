@@ -6,7 +6,10 @@ const wordSchema = new mongoose.Schema({
         required: [true, "word is required"],
         unique: true
     },
-    lexicalCategory: String,
+    lexicalCategory: {
+        type: String,
+        required: true
+    },
     origin: String,
     audio: Object,
     definitions: {

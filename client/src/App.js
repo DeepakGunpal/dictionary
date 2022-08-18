@@ -16,8 +16,9 @@ function App() {
       });
 
       const data = await res.json();
-
-      setMeanings(data);
+      if (Array.isArray(data)) {
+        setMeanings(data);
+      }
 
     } catch (error) {
       console.log(error);
