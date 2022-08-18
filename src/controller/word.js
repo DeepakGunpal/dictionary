@@ -99,7 +99,7 @@ const word = async (req, res) => {
             word = { $regex: word, $options: 'i' }
         }
 
-        const fetchWord = await wordModel.find({ title: word })
+        const fetchWord = await wordModel.find({ title: word }).collation({ locale: "en", strength: 2 }).sort({ title: 1 })
         res.status(200).send(fetchWord);
     } catch (error) {
         const errorForUser = handleErr(error);

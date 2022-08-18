@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import Header from './components/Headers/Header';
-import Definations from './components/definations/Definations';
+import Results from './components/results/Results';
 
 function App() {
   const [word, setWord] = useState("");
@@ -45,7 +45,7 @@ function App() {
           setWord={setWord}
         />
         {meanings && (
-          <Definations word={word} meanings={meanings} />
+          <Results word={word} meanings={meanings} />
         )}
       </Container>
     </div>
