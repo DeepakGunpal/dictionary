@@ -35,7 +35,7 @@ export default function AddWord() {
         });
 
 
-        if (data.status !== 200) window.alert("Word, class of word and definition is mandatory")
+        if (data.status !== 200) window.alert("Invalid Data")
         else window.alert("Word Added successfully")
 
     }
@@ -72,7 +72,9 @@ export default function AddWord() {
                 <DialogTitle>Add New Word</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        TO add a new word, Word and Definition is mandatory.
+                        Important : <br/>
+                        -Word has to be unique.<br/>
+                        -Word, class of Word and Definition is mandatory.
                     </DialogContentText>
                     <br />
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
