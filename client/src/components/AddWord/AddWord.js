@@ -34,7 +34,7 @@ export default function AddWord() {
             body: JSON.stringify(wordData)
         });
 
-
+        console.log(data)
         if (data.status !== 200) window.alert("Invalid Data")
         else window.alert("Word Added successfully")
 
@@ -72,9 +72,9 @@ export default function AddWord() {
                 <DialogTitle>Add New Word</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Important : <br/>
-                        -Word has to be unique.<br/>
-                        -Word, class of Word and Definition is mandatory.
+                        Important : <br />
+                        -Word has to be unique.<br />
+                        -Word and Definition is mandatory.
                     </DialogContentText>
                     <br />
                     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -90,7 +90,6 @@ export default function AddWord() {
                             onChange={handleInput}
                             label="Class of word"
                             name="lexicalCategory"
-                            required="true"
                         />
                     </div>
                     <TextField
